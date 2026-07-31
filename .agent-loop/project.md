@@ -117,13 +117,13 @@ Recording Rules:
 
 ## Current Work
 
-Active Feature: .agent-loop/features/2026-07-31-semantic-search/ (all tasks done; close pending human confirmation)
+Active Feature: none
 Paused Features: none
 Target Release Context: none
-Next Suggested Action: Close Feature 2026-07-31-semantic-search after human confirmation; then human spot-check in the browser (`make dev`, /search) within the remaining 48h window.
-Gate Mode: Feature Auto-Loop
-Gate Mode Scope: Feature 2026-07-31-semantic-search, accepted stories US1..US4, tasks T001..T006
-Gate Mode Stop Conditions: all six gate classes; scope/boundary change; failed verification after diagnosis; human lifecycle request
+Next Suggested Action: none — Feature 2026-07-31-semantic-search closed 2026-07-31 after submission to https://github.com/wangheng0206/clinical-record-semantic-search
+Gate Mode: Strict Mode
+Gate Mode Scope: none
+Gate Mode Stop Conditions: all six gate classes
 Feature Follow-up Lookback: 90 days
 Current Memory Merge Report: none
 Current Memory Merge Status: none

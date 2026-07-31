@@ -2,7 +2,7 @@
 
 Created: 2026-07-31
 Updated: 2026-07-31
-Status: active
+Status: closed
 Implementation Readiness: accepted
 Gate 1 Decision: accepted
 Gate 2 Decision: approve-and-start
@@ -330,8 +330,15 @@ Known gaps / accepted limitations (not defects): interactive browser click-throu
 
 ## Close Record
 
-(pending)
+Closed At: 2026-07-31
+Human Decision: 确认关闭 (human confirmed close after full verification and submission to https://github.com/wangheng0206/clinical-record-semantic-search)
 
 ## Archive Readiness
 
-(pending)
+Closed At: 2026-07-31
+Delivered Summary: end-to-end clinical semantic search — idempotent indexing, practice-isolated pgvector retrieval, patient-level evidence results, six-state UI, full test coverage, README solution notes
+Verification: complete
+Feature Close Review: complete
+Drift: resolved
+Project Memory Impact: complete
+Open Follow-up: none

@@ -2,7 +2,7 @@
 
 Created: 2026-07-31
 Updated: 2026-07-31
-Status: active
+Status: closed
 Feature Type: normal
 
 Source Requirements:

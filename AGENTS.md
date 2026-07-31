@@ -1,0 +1,194 @@
+# AGENTS.md — Agent Loop Bootstrap
+
+This project uses `agent-loop` for agent-assisted development.
+
+The agent is responsible for steering the workflow. Do not wait for the human to name every next step.
+
+Guidance language: English (repo docs and reviewer are English). Keep stable artifact names, stage names, and file paths in English, such as `agent-loop`, `Feature Spec`, `Feature Auto-Loop`, `Task Auto-Run`, `project.md`, and `requirements/`.
+
+<!-- agent-loop:managed-start section:bootstrap source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Bootstrap Protocol
+
+Before development work:
+
+1. Read this file first.
+2. Treat root `AGENTS.md` as a bootstrap cache, not a replacement for the `agent-loop` skill; load the controller at Project Entry, Resume, Re-Adopt, stage boundaries, context recovery, or uncertainty.
+3. If the controller is unavailable or load-failed, force Strict Mode, suspend auto grants, and limit fallback to Chat, read-only Project Entry, Recovery analysis, read-only Operational Support, and restoration guidance; do not Execute, write Human-gated artifacts, Submit, Pause, or Close.
+4. Discover exactly one `.agent-loop/` or accepted legacy `agent-loop/` memory root; if no reliable memory exists, route to Project Entry / Init before feature work.
+5. Read only stage-relevant project memory, remote-entry evidence, Active Feature artifacts, and linked detail needed for the current decision.
+6. Resolve stale or outside-loop memory through Recovery / Re-Adopt, and remote source conflicts through Remote Project Discovery, before relying on local claims.
+7. Check Project Skill metadata before generic executable fallback; verify and load only a matched active skill, while preserving its per-invocation Execution Gate because loading never authorizes execution.
+8. Run Stage Helper Capability Scan only after controller activation or recorded unavailable/load-failed status; helpers improve methods but do not own routing or gates.
+9. Check the closest directory guidance, classify current intent and project state, and recommend exactly one next action.
+<!-- agent-loop:managed-end section:bootstrap -->
+
+<!-- agent-loop:managed-start section:ownership source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Agent Ownership
+
+When existing branch rules are confused, the target version is unclear, or customer isolation is at risk, load `references/branch-management.md`, recommend one optional strategy, and adopt it only after explicit human acceptance.
+
+- Own the project outcome, not only the workflow: inspect all safely available code, Git, tests, documentation, environment, and memory evidence before asking the human, then continue through the authorized scope until verified completion or a concrete Human Gate.
+- Own diagnosis, sequencing, implementation, verification, Review, Drift Check, and Project Memory Update within the authorized boundary.
+- Classify the current state and recommend one next action; propose missing artifacts instead of waiting for the human to name internal steps.
+- Use helpers as methods only; `agent-loop` retains artifact paths, status, Human Gates, lifecycle, submit, pause, and close authority.
+- After each meaningful stage, report changed artifacts, fresh evidence, drift, and the next recommendation; use a table-first Human Review Summary for non-trivial confirmation.
+
+Core workflow:
+Inspect -> Classify Intent And Project State -> Recommend One Next Action -> Human Gate When Required -> Act Through Loaded Reference -> Verify -> Review / Drift -> Record Memory -> Submit / Pause / Close
+
+Product delivery:
+Requirements / Product Definition -> Decision / ADR If Needed -> Feature Product Slice -> Plan -> Execute -> Verify / Review / Drift -> Memory -> Submit / Close
+<!-- agent-loop:managed-end section:ownership -->
+
+<!-- agent-loop:managed-start section:message-intent source:agent-loop-skill block-version:1.5.2-20260728 -->
+## Message Intent Guard
+
+Classify the latest human message before project-state routing:
+
+- Chat answers or discusses without creating workflow artifacts.
+- Requirements Discussion shapes unresolved product need into one Human-reviewed Brief/Standard Requirement Product Definition before implementation.
+- An already-defined actionable ordinary non-Bug change enters Lightweight Change Assessment only after Bug and active-Feature ownership checks.
+- Explicit Bug intent, regression evidence, or clear Feature ownership enters Bug / Feature Follow-up before Lightweight routing.
+- Feature Request enters construction only from accepted upstream meaning and the normal runtime gates.
+- Operational Support defaults to read-only use, test, run, rollout, or diagnosis until implementation or mutation is separately approved.
+- Project Skill Management keeps discovery/loading separate from its per-invocation Execution Gate.
+- Feature Archive / Rehydrate keeps read-only scan separate from its exact apply authorization.
+- Post-Merge Memory Reconciliation begins only after verified code integration and an observed memory conflict; no conflict means `reconciliation-not-needed`, with no full scan or extra gate.
+- Proposal, deferred requirement, Requirement/Feature lifecycle, and Git/lifecycle requests remain distinct intents and authorities.
+
+Intent may change with the latest message. When it is genuinely unclear, inspect all safely available evidence first, recommend one route, and ask exactly one blocking question.
+<!-- agent-loop:managed-end section:message-intent -->
+
+<!-- agent-loop:managed-start section:workflow-stage-map source:agent-loop-skill block-version:1.5.2-20260728 -->
+## Workflow Gateway Map
+
+Use this after Bootstrap and Message Intent. Apply: Safety Stop -> Remote Discovery -> Memory Recovery -> Feature Archive Maintenance -> Active Feature Guard -> Blocker Resolution -> Intent Routing -> Normal Stage Continuation. Select one first hop and load its published owner before acting.
+
+| Signal family | First Hop | Load From agent-loop Skill |
+|---|---|---|
+| No reliable memory | Project Entry / Init | `references/project-entry-scan.md`, `references/project-guidance.md`, `references/stage-guides.md` |
+| Remote source of truth | Remote Project Discovery | `references/remote-project-discovery.md` |
+| Broad memory damage, stale/incomplete memory without a stable verified post-merge conflict boundary, outside-loop work, or unresolved reconciliation recovery | Recovery / Re-Adopt | `references/recovery-and-backfill.md` |
+| Explicit closed-history archive or rehydrate | Feature Monthly Archive | `references/stage-guides.md`, `references/artifact-rules.md`, `references/feature-follow-up.md` |
+| Explicit Bug intent, regression evidence, or clear Feature ownership | Bug / Feature Follow-up | `references/bug-management.md`, `references/feature-follow-up.md` |
+| Already-defined actionable ordinary non-Bug change that appears bounded, reversible, and exactly verifiable | Lightweight Change Assessment | `references/lightweight-change-lane.md` |
+| Product need, meaning, scope, or delivery phases are still being shaped | Requirements Discussion | `references/requirement-management.md`, `references/product-definition.md`, `references/requirement-product-grill.md` |
+| Human confirms Product Definition recording, requirement acceptance, deferral, or lifecycle action | Requirement Archive | `references/requirement-management.md`, `references/stage-guides.md` |
+| Durable newcomer documentation is requested after reliable Project Entry | Evidence-Graph + DDD Onboarding | `references/onboarding-knowledge-base.md` |
+| Accepted requirement needs shared technical landing before feature specification | Decision & Design If Needed | `references/project-decisions.md` |
+| Accepted upstream meaning is ready for implementation or current Feature work continues | Feature Construction / Runtime Continuation | `references/runtime.md`, `references/stage-guides.md` |
+| Use, test, run, deploy, or diagnose current behavior without implementation approval | Code-Guided Operational Support | `references/stage-guides.md`, `references/runtime.md` |
+| Canonical Agent Loop checker failure after an exact rerun | Diagnose Failure / Checker Recovery | `references/checker-recovery.md`, `references/stage-guides.md` |
+| Create or manage a reusable project workflow | Project Skill Creation / Update | `references/project-skills.md`, `references/skill-routing.md`, `references/external-skill-adapters.md` |
+| Verified code integration has an observed memory conflict | Post-Merge Memory Reconciliation | `references/memory-reconciliation.md` |
+| Submit, commit, PR, merge, release, publish, pause, close, or cleanup is requested | Lifecycle Boundary | `references/submit-and-integrate.md`, `references/stage-guides.md` |
+| Ordinary question or discussion has no artifact or action intent | Chat | `references/runtime.md` |
+
+The complete Product Definition, Feature Spec/Product Slice, Requirement Checklist, Work Breakdown, Delivery Contract, Test Design, E2E, Technical Design, Plan, Execute, Verify, Review, Drift Check, Project Memory Update, Feature Completion Check, and lifecycle order remains owned by `references/runtime.md` and loaded references. A Gateway selects its owner family; it never removes or reorders a downstream stage.
+
+No observed memory conflict means `reconciliation-not-needed`: do not scan all memory, create a report, or add a Human Gate.
+<!-- agent-loop:managed-end section:workflow-stage-map -->
+
+<!-- agent-loop:managed-start section:gates source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Gate Modes
+
+- Feature construction normally stops at two reviews: Gate 1 confirms Goal, Scope, Acceptance, and Explicit Exclusions and authorizes package preparation; Gate 2 confirms Execution Boundary, Verification, Risk/Rollback, and whether to start Feature Auto-Loop.
+- Package preparation completes applicable Tasks, Tests, E2E, code context, Plan, coverage, risk, rollback, and consistency without per-stage prompts or target implementation.
+- AI evaluates Package Files completeness, Gate/action/time consistency, later semantic/boundary drift, and current Story/Task/Plan meaning directly; Feature Gate acceptance and continuation require no local digest or Feature review Checker. A new Task ID inside the accepted boundary does not itself repeat Gate 2. `Approve package only` never executes; `Approve package and start implementation` enables Feature Auto-Loop without another generic prompt. A valid separate later-start transition may also enable it, but preserves the package-only Gate 2 baseline.
+- Strict Mode is available when the human explicitly requests stage-by-stage control and is mandatory when controller fallback forces it.
+- Task Auto-Run requires an accepted task/story plan and explicit human enablement for one execution unit, beginning with Analyze Consistency.
+- Auto modes continue only Agent-ready work inside their grant and stop at every independent Gate below.
+- Before Task/Test/Plan/Execute/Resume relies on a Feature, load its Feature Context Snapshot and require the Requirement/ADR freshness check to be current.
+<!-- agent-loop:managed-end section:gates -->
+
+<!-- agent-loop:managed-start section:required-stops source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Required Stops
+
+- Semantic Gate: Requirement, Concept, acceptance, Product, or Decision / ADR meaning is unresolved or would be redefined downstream.
+- Scope And Risk Gate: scope expansion or architecture, security, data, permission, dependency, migration, public interface, customer isolation, or durable boundary changes.
+- Execution Gate: Requirement/Feature lifecycle, plan execution, Project Skill, subagent, Delivery Contract, Archive/rehydrate, or another independently authorized action.
+- Evidence Gate: controller/infrastructure unavailable, repeated verification failure, unresolved memory/artifact conflict outside a reversible fact-determined Post-Merge Memory Reconciliation rewrite, blocking dirty work, or missing Review/Drift/Memory evidence.
+- A suspected checker defect routes to isolated Human-authorized Checker Recovery; it never becomes a silent bypass or canonical pass, and any upstream Issue creation keeps an independent External Mutation Gate.
+- External Mutation Gate: secrets, paid quota, credentials, configuration, external service, production/staging, deploy, release, or destructive action.
+- Git And Lifecycle Gate: branch mutation, commit, push, PR, merge, tag, release, publish, pause, close, Full Memory Audit / Recovery Apply/Restore, or cleanup.
+
+Auto modes do not bypass these six Gate classes.
+<!-- agent-loop:managed-end section:required-stops -->
+
+<!-- agent-loop:managed-start section:completion source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Completion Rules
+
+- Code changes alone never make a task or Feature done.
+- Fresh verification, Review, Drift Check, and required Project Memory evidence precede completion.
+- Task Done Gate also requires accepted scope, recorded evidence, Spec Review, triggered Standards Review, and evidence-linked status.
+- Run Feature Completion Check after likely completion, before another Feature starts, and when an active Feature may already be complete.
+- Feature Close Review, applicable accepted-design/contract evidence, drift resolution, memory updates, and explicit human close confirmation remain required.
+<!-- agent-loop:managed-end section:completion -->
+
+<!-- agent-loop:managed-start section:submit source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Submit And Commit Rules
+
+- Submit, commit, push, PR, merge, tag, release, publish, pause, close, and cleanup remain independent Human Gates.
+- For this exercise the human has decided no code submission (no push/PR) is required; any change to that decision is a new Human Gate.
+- Before any requested submit action, inspect the intended diff, fresh verification, Review, Drift Check, project-memory status, branch/release constraints, and unrelated work.
+- Commit only intended files within the approved scope; preserve unrelated human changes and do not infer one Git permission from another.
+- After verified code integration, use `reconciliation-not-needed` when no memory conflict exists; otherwise resolve only the observed conflict before any applicable later memory commit, push, release, publish, or source cleanup Gate.
+- Use repository commit rules when present; otherwise use a clear type, summary, and concrete body. Record authorized results in the owning feature evidence.
+<!-- agent-loop:managed-end section:submit -->
+
+<!-- agent-loop:managed-start section:artifacts source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Project Memory And Artifacts
+
+- Requirement owns human source and product meaning; Decision / ADR owns accepted technical landing; Feature owns implementation; Bug owns defect identity and lifecycle; Lightweight Execution Card owns bounded change evidence; project memory owns durable current facts.
+- The human source requirement for this exercise is the in-repo `docs/TAKE_HOME_DESIGN.md`; never modify it or other human-owned docs.
+- Resolve artifacts under the accepted `.agent-loop/` memory root; keep `project.md` as durable current memory.
+- Preserve original human requirement material. Keep lifecycle/index updates, accepted product meaning, technical decisions, implementation evidence, contracts, archive locators, and project-local skills in their owning artifacts.
+- Keep future or deferred product work in Requirement lifecycle/backlog artifacts, never as an unowned root-guidance task.
+- Root `AGENTS.md` contains only startup-critical navigation and stable constraints; it does not own task logs, raw requirements, backlog detail, temporary plans, or test transcripts.
+<!-- agent-loop:managed-end section:artifacts -->
+
+<!-- agent-loop:managed-start section:architecture source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Architecture Snapshot
+
+Fullstack monorepo, everything runs in Docker Compose:
+
+- `apps/web/` — Next.js 16 (App Router, Tailwind v4); feature-local code under `apps/web/features/`; search UI is candidate-owned.
+- `services/api/` — FastAPI; feature modules under `app/features/` (health, session, patients provided; `search`, `indexing` candidate-owned); embedding client under `app/clients/`; scripts under `app/scripts/`.
+- `services/embedding/` — provided ONNX MiniLM service (384-dim). Never modify; respect its contract (256 tokens, 64 texts/request, 8,000 chars/text, blank rejected).
+- `database/` — `init/`, `migrations/` (0001 provided, never edit; add 0002 for chunks), `seed/` (committed CSVs are source of truth).
+
+Practice isolation is a hard security boundary: enforced server-side inside the API retrieval path; the client never selects a practice.
+<!-- agent-loop:managed-end section:architecture -->
+
+<!-- agent-loop:managed-start section:directory-guidance source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Directory Guidance
+
+- Directory-level `AGENTS.md` files are for long-lived boundary rules only.
+- When creating a new app root, package root, service root, test root, security/data/runtime boundary, plugin root, or docs root, propose a directory-level `AGENTS.md` and ask for human confirmation before writing it.
+- Do not create directory-level `AGENTS.md` for ordinary component, utility, temporary, or feature implementation folders.
+<!-- agent-loop:managed-end section:directory-guidance -->
+
+<!-- agent-loop:managed-start section:commands source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Project Commands
+
+```bash
+make setup     # build images, start services, apply migrations (needs Docker running)
+make seed      # load the synthetic dataset (deterministic, repeatable)
+make dev       # web on :3000, api on :8000
+make index     # candidate-owned indexing workflow
+make test      # backend + frontend suites
+make smoke     # db + seed + real embedding call
+make lint && make typecheck
+```
+<!-- agent-loop:managed-end section:commands -->
+
+<!-- agent-loop:managed-start section:hard-constraints source:.agent-loop/project.md block-version:1.5.2-20260728 -->
+## Project-Specific Hard Constraints
+
+- Never modify `database/migrations/0001_base_schema.sql`, `services/embedding/`, or human-owned docs (`docs/`); candidate work goes in the marked candidate-owned areas. `README.md` may only gain the solution writeup required by the assignment email; its provided operating-manual content stays intact.
+- Retrieval only: never generate diagnoses, infer unrecorded conditions, or present similarity scores as clinical confidence.
+- The search request must not accept a client-selected practice identifier; isolation is enforced server-side.
+- Never log document bodies, supporting passages, patient names, or embedding vectors; never expose stack traces or driver details to clients.
+- Do not send records to any external service; nothing leaves the local Docker network at run time.
+- Return excerpts, not complete documents, when an excerpt suffices.
+<!-- agent-loop:managed-end section:hard-constraints -->

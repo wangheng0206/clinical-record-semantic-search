@@ -1,15 +1,15 @@
 # Indexing workflow
 
-The entry point `app/scripts/index_clinical_documents.py` is a starter stub.
+The entry point `app/scripts/index_clinical_documents.py` is implemented.
 
 ```bash
 make index
 ```
 
-Implement a workflow that makes the supplied clinical documents semantically searchable.
-It must be repeatable, reflect changed source content, tolerate an individual document
-that cannot be indexed, and report a useful completion summary.
-
-The searchable representation, chunking strategy, change-detection mechanism, transaction
-boundaries, and failure policy are yours to design. Respect the provided embedding-service
-contract and explain your decisions in the pull request.
+The workflow chunks clinical documents (paragraph packing with overlap), embeds them
+through the provided embedding service, and stores them in `document_chunks`. A
+per-document content hash in `document_index_state` drives change detection: re-runs
+skip unchanged documents, re-index changed ones inside one transaction per document,
+and record an individual unindexable document as `failed` with a reason instead of
+aborting the run. A completion summary reports scanned/indexed/skipped/failed counts
+plus failed document ids.

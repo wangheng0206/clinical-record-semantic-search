@@ -278,7 +278,30 @@ Known gaps / accepted limitations (not defects): interactive browser click-throu
 
 ## Submit / Integrate
 
-(not applicable — no submission per human decision; any change requires a new Human Gate)
+- Date: 2026-07-31
+- Scope: whole feature (candidate code + tests + README + agent-loop artifacts)
+- Action: commit + push to personal public repository (submission method changed by human: email says push to own GitHub repo, public or private+invite; human chose public and chose to include workflow artifacts)
+- Diff Summary: 33 files, +4741/-134 — migration 0002, indexing (chunker/runner/script), search API (repository/service/router/schemas), search UI (action/components/page), tests (4 new files + acceptance), README solution notes, .agent-loop/ + AGENTS.md + CLAUDE.md
+- Verification: backend 52 passed, frontend 12 passed, integration 7 passed, ruff/eslint/tsc clean, smoke ok (all fresh within the same day)
+- Drift Check: none (feature context checker CURRENT before commit)
+- Review: Feature-level Spec Review + Standards Review recorded above
+- Commit: 9df46bb `feat: clinical record semantic search`
+- PR: not applicable — direct push of `main` to personal repo `submission` remote (origin medlink repo untouched)
+- Remaining Risk: none known; live stack left running for the reviewer/human
+- Source Branch: main (local clone of the exercise repo)
+- Branch Class: not-applicable
+- Target Release Context: not-applicable
+- Target Branch: `main` on https://github.com/wangheng0206/clinical-record-semantic-search
+- Sealed Check: not-applicable
+- Customer Isolation Check: not-applicable
+- Requested Authorization: human instruction "需要提交到我的仓库" + visibility/artifact answers (public, include artifacts)
+- Explicitly Not Authorized: push to origin (medlink-global/interview), PR against the exercise repo, branch deletion
+- Merge Evidence / Cleanup Decision: remote verified via `gh api` (commit 9df46bb on main, PUBLIC)
+- Related Bugs / Current Status: none
+- Bug Verification Evidence: not-applicable
+- Unresolved Bug Close Decisions: none
+- Memory Merge Report / Status / Blocker: none — `reconciliation-not-needed`
+- Memory Commit Gate Decision: not-applicable (agent-loop artifacts committed in the same code commit per human choice)
 
 ## Spec Drift
 

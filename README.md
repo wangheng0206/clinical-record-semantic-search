@@ -349,8 +349,10 @@ document them if you reproduce the setup behind a restricted network:
    mirror and injected at build time with BuildKit
    `--build-context model=<dir>`, leaving `services/embedding/Dockerfile` untouched.
 3. On Docker Desktop for macOS, `database/init/00-create-databases.sh` (committed
-   non-executable) fails to run on first boot; the test database and pgvector
-   extension were created manually with the same SQL the script contains.
+   non-executable upstream) fails to run on first boot, so the test database is never
+   created. The executable bit has been restored in this repository (a mode-only
+   change); verified with a scratch container that first boot now runs
+   `00-create-databases.sh` and creates `clinical_search_test` cleanly.
 
 ### Future extensions
 

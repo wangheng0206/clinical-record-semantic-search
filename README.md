@@ -355,6 +355,7 @@ document them if you reproduce the setup behind a restricted network:
 ### Future extensions
 
 - Hybrid retrieval (pgvector + `tsvector` keyword score) for exact-term anchors like drug names.
+- Embedding-model versioning in the index metadata: the provided service pins the model by revision, and changing the pin silently invalidates every stored vector. Recording the model id in `document_index_state` and mismatching it to force a re-index would make that operational transition deliberate instead of surprising.
 - Section-aware chunking and per-type chunk profiles (labs vs narrative notes).
 - Reranking stage and patient-level recency weighting.
 - Incremental indexing trigger on `source_updated_at` instead of command runs.
